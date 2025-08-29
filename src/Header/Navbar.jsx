@@ -1,133 +1,199 @@
-import React, { useState } from "react";
-0
- 
+import React, { useEffect, useState } from "react";
+
 const Navbar = () => {
-  const [open, setOpen] = useState(false);
+  const [menu, setMenu] = useState([]);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [hoveredId, setHoveredId] = useState(null);
+  const [active, setActive] = useState("#home");
+
+  useEffect(() => {
+    fetch("http://localhost:5000/menu")
+      .then((r) => r.json())
+      .then(setMenu)
+      .catch(console.error);
+  }, []);
+
+  // lock scroll when mobile sheet is open (nice UX)
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+  }, [mobileOpen]);
 
   return (
-    <nav className="w-full py-[10px] bg-white shadow-md fixed top-0 left-0 z-50">
-      <div className="mx-auto px-4 lg:px-8 flex items-center justify-between h-16">
-        {/* Logo */}
-        <div className="flex navbar items-center space-x-12">
-          <h1 className="Salwoodlogo">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-gray-100 bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+      <div className="mx-auto py-[10px] max-w-7xl px-4 lg:px-8">
+        <div className="flex h-16 items-center justify-between">
+          {/* Logo */}
+          <a href="#" className="flex items-center gap-3">
             <img
               src="/src/assets/Images/the-sal-wood-logo.png"
-              alt="Logo"
-              className="h-30 w-auto mx-auto"
+              alt="The Sal Wood"
+              className="h-30 w-auto"
             />
-          </h1>
+          </a>
 
-          {/* Menu (Large Screen) */}
-          <ul className="hidden lg:flex space-x-8 text-gray-700 font-medium">
-            <li>
-              <a href="#home" className="hover:text-blue-600">
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="#about" className="hover:text-blue-600">
-                About
-              </a>
-            </li>
-            <li>
-              <a href="#services" className="hover:text-blue-600">
-                Service
-              </a>
-            </li>
-            <li>
-              <a href="#faq" className="hover:text-blue-600">
-                FAQ
-              </a>
-            </li>
-            <li>
-              <a href="#contact" className="hover:text-blue-600">
-                Contact
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        {/* Reservation Button (Desktop) */}
-        <div className="hidden lg:block">
-          <button className="bg-brandYellow text-black px-4 py-2 rounded-lg hover:bg-yellow-500 transition">
-            Reservation
-          </button>
-        </div>
-        {/* <div className="hidden lg:block">
-  <button className=" text-black px-4 py-2 rounded-lg hover:bg-yellow-500 transition">
-    Reservation
-  </button>
-</div> */}
-
-
-        {/* Mobile Menu Button */}
-        <div className="lg:hidden">
-          <button
-            onClick={() => setOpen(!open)}
-            className="text-gray-700 focus:outline-none"
-          >
-            {open ? (
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+          {/* Desktop nav */}
+          <nav className="hidden lg:flex items-center gap-2">
+            {menu.map((item) => (
+              <div
+                key={item.id}
+                className="relative group"
+                onMouseEnter={() => setHoveredId(item.id)}
+                onMouseLeave={() => setHoveredId(null)}
+                onFocus={() => setHoveredId(item.id)}
+                onBlur={() => setHoveredId(null)}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M6 18L18 6M6 6l12 12"
-                />
+                <a
+                  href={item.link}
+                  onClick={() => setActive(item.link)}
+                  className={`relative px-3 py-2 rounded-lg transition-colors duration-200 ${
+                    active === item.link
+                      ? "text-blue-600 font-semibold"
+                      : "text-gray-700 hover:text-blue-600"
+                  } 
+                  after:absolute after:inset-x-3 after:bottom-1.5 after:h-0.5 after:bg-blue-600 after:origin-left after:scale-x-0 group-hover:after:scale-x-100 after:transition-transform`}
+                >
+                  {item.name}
+                </a>
+
+                {/* Smooth dropdown (no arrow) */}
+                {item.submenu && (
+                  <div className="absolute left-0 top-full pt-2">
+                    <div
+                      className={`min-w-[220px] overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-xl ring-1 ring-black/5 transform-gpu transition-all duration-200 ease-out
+                        ${
+                          hoveredId === item.id
+                            ? "opacity-100 translate-y-0 scale-100"
+                            : "pointer-events-none opacity-0 -translate-y-1 scale-95"
+                        }`}
+                    >
+                      <ul className="py-2">
+                        {item.submenu.map((sub) => (
+                          <li key={sub.id}>
+                            <a
+                              href={sub.link}
+                              onClick={() => setActive(sub.link)}
+                              className={`block px-4 py-2.5 rounded-lg transition ${
+                                active === sub.link
+                                  ? "bg-blue-50 text-blue-700 font-medium"
+                                  : "text-gray-700 hover:bg-gray-50 hover:text-blue-600"
+                              }`}
+                            >
+                              {sub.name}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </nav>
+
+          {/* Desktop CTA */}
+          <div className="hidden lg:block">
+            <a
+              href="#reservation"
+              className="inline-flex items-center rounded-xl bg-brandYellow px-4 py-2 text-sm font-semibold text-black shadow-sm transition hover:brightness-95"
+            >
+              Reservation
+            </a>
+          </div>
+
+          {/* Mobile toggle */}
+          <button
+            onClick={() => setMobileOpen((v) => !v)}
+            aria-label="Toggle menu"
+            className="lg:hidden inline-flex items-center justify-center rounded-lg p-2 text-gray-700 ring-1 ring-gray-200 hover:bg-gray-50"
+          >
+            {mobileOpen ? (
+              <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
               </svg>
             ) : (
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
+              <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             )}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown with Animation */}
+      {/* Mobile sheet (no arrows, smooth) */}
       <div
-        className={`lg:hidden bg-white shadow-md px-4 py-4 space-y-4 transform transition-all duration-300 ease-in-out
-        ${
-          open
-            ? "opacity-100 translate-y-0 max-h-screen"
-            : "opacity-0 -translate-y-4 max-h-0 overflow-hidden"
-        }`}
+        className={`lg:hidden overflow-hidden border-t border-gray-100 bg-white transition-[max-height,opacity] duration-300 ease-out
+        ${mobileOpen ? "opacity-100 max-h-screen" : "opacity-0 max-h-0"}`}
       >
-        <a href="#home" className="block text-gray-700 hover:text-blue-600">
-          Home
-        </a>
-        <a href="#about" className="block text-gray-700 hover:text-blue-600">
-          About
-        </a>
-        <a href="#services" className="block text-gray-700 hover:text-blue-600">
-          Service
-        </a>
-        <a href="#faq" className="block text-gray-700 hover:text-blue-600">
-          FAQ
-        </a>
-        <a href="#contact" className="block text-gray-700 hover:text-blue-600">
-          Contact
-        </a>
-        <button className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
-          Reservation
-        </button>
+        <div className="px-4 pb-4 pt-2">
+          <ul className="space-y-1">
+            {menu.map((item) => (
+              <li key={item.id} className="rounded-lg">
+                {/* Top-level row */}
+                <button
+                  className={`flex w-full items-center justify-between rounded-lg px-3 py-2 transition hover:bg-gray-50 ${
+                    active === item.link ? "text-blue-600 font-semibold" : "text-gray-700"
+                  }`}
+                  onClick={() => {
+                    // toggle only if has submenu; else navigate
+                    if (item.submenu) {
+                      setHoveredId((id) => (id === item.id ? null : item.id));
+                    } else {
+                      setActive(item.link);
+                      setMobileOpen(false);
+                    }
+                  }}
+                >
+                  <span>{item.name}</span>
+                  {/* subtle dot to show expandable, no arrow */}
+                  {item.submenu && (
+                    <span
+                      className={`ml-3 h-2 w-2 rounded-full transition ${
+                        hoveredId === item.id ? "bg-blue-500" : "bg-gray-300"
+                      }`}
+                    />
+                  )}
+                </button>
+
+                {/* Collapsible submenu */}
+                {item.submenu && (
+                  <div
+                    className={`pl-3 transition-all duration-300 ease-out ${
+                      hoveredId === item.id ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
+                    } overflow-hidden`}
+                  >
+                    {item.submenu.map((sub) => (
+                      <a
+                        key={sub.id}
+                        href={sub.link}
+                        onClick={() => {
+                          setActive(sub.link);
+                          setMobileOpen(false);
+                        }}
+                        className={`mt-1 block rounded-md px-3 py-2 text-sm transition ${
+                          active === sub.link
+                            ? "bg-blue-50 text-blue-700 font-medium"
+                            : "text-gray-600 hover:text-blue-600 hover:bg-gray-50"
+                        }`}
+                      >
+                        {sub.name}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
+
+          <a
+            href="#reservation"
+            onClick={() => setMobileOpen(false)}
+            className="mt-3 block w-full rounded-xl bg-blue-600 px-4 py-2 text-center font-semibold text-white shadow hover:bg-blue-700 transition"
+          >
+            Reservation
+          </a>
+        </div>
       </div>
-    </nav>
+    </header>
   );
 };
 

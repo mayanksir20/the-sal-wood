@@ -1,0 +1,31 @@
+{
+  "menu": [
+    {
+      "id": 1,
+      "name": "Home",
+      "link": "#home"
+    },
+    {
+      "id": 2,
+      "name": "About",
+      "link": "#about"
+    },
+    {
+      "id": 3,
+      "name": "Service",
+      "link": "#services",
+      "submenu": [
+        {
+          "id": 31,
+          "name": "Room Booking",
+          "link": "#room"
+        },
+        {
+          "id": 32,
+          "name": "Spa",
+          "link": "#spa"
+        }
+      ]
+    }
+  ]
+}
