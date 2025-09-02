@@ -27,5 +27,49 @@
         }
       ]
     }
+  ],
+  "bannerContent": [
+    {
+      "heading": "Weddings & Social Events",
+      "subcontent": "Your dream destination for unforgettable celebrations",
+      "content": "Our resort is the perfect destination wedding venue, hosting royal weddings, grand receptions, and private social events. Spacious halls, lush lawns, premium décor, and complete wedding packages ensure your special day is truly memorable.",
+      "buttonText": "Explore Now"
+    },
+    {
+      "heading": "Live Entertainment & Performers",
+      "subcontent": "Where nights come alive with music and laughter",
+      "content": "Weekend live concerts, DJ parties, comedy nights, and cultural shows make the resort a vibrant entertainment hub. Ticketed events attract audiences while boosting F&B sales, with easy integration for online booking platforms.",
+      "buttonText": "Know More"
+    },
+    {
+      "heading": "Corporate Tie-Ups + Co-working Spaces",
+      "subcontent": "Seamless corporate solutions & flexible workspaces",
+      "content": "Our resort offers versatile halls and meeting spaces for corporate events, conferences, workshops, and team-building activities. In addition, modern co-working spaces provide freelancers and startups with a productive environment, combining business efficiency with the resort’s serene ambiance.",
+      "buttonText": "Reserve Table"
+    },
+    {
+      "heading": "Film, Ad & OTT Shooting Location",
+      "subcontent": "Premium location for cinematic and commercial productions",
+      "content": "Our resort provides stunning settings for films, OTT series, advertisements, and brand campaigns. With versatile indoor and outdoor spaces, professional crews can capture cinematic shots, commercial visuals, and digital content in a fully equipped, picturesque environment.",
+      "buttonText": "Book Now"
+    }
+  ],
+  "services": [
+    {
+      "title": "Weddings & Social Events",
+      "img": "https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+      "rating": 5.0,
+      "description": "The Sal Wood Resort is the perfect destination to celebrate life’s special moments. From weddings and receptions to private gatherings, our elegant lawns and premium décor set the stage for unforgettable memories. Our team ensures every event is crafted with a touch of luxury.",
+      "price": "$129 per night",
+      "features": ["price", "wifi", "bedroom", "tv", "fire", "more"]
+    },
+    {
+      "title": "Beach House, California",
+      "img": "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+      "rating": 4.8,
+      "description": "Beautiful beach house with ocean views...",
+      "price": "$199 per night",
+      "features": ["price", "wifi", "bedroom", "tv", "fire", "more"]
+    }
   ]
 }

@@ -20,7 +20,7 @@ const Navbar = () => {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-gray-100 bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60">
-      <div className="mx-auto py-[10px] max-w-7xl px-4 lg:px-8">
+      <div className="mx-auto py-[10px] px-4 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <a href="#" className="flex items-center gap-3">
@@ -45,12 +45,12 @@ const Navbar = () => {
                 <a
                   href={item.link}
                   onClick={() => setActive(item.link)}
-                  className={`relative px-3 py-2 rounded-lg transition-colors duration-200 ${
+                  className={`relative px-3 py-2 rounded-lg transition-colors duration-200 text-lg ${
                     active === item.link
-                      ? "text-blue-600 font-semibold"
-                      : "text-gray-700 hover:text-blue-600"
+                      ? "text-[#c4c451]"
+                      : "text-black hover:text-[#c4c451]"
                   } 
-                  after:absolute after:inset-x-3 after:bottom-1.5 after:h-0.5 after:bg-blue-600 after:origin-left after:scale-x-0 group-hover:after:scale-x-100 after:transition-transform`}
+                  after:absolute after:inset-x-3 after:bottom-1.5 after:h-0.5 after:bg-[#c4c451] after:origin-left after:scale-x-0 group-hover:after:scale-x-100 after:transition-transform`}
                 >
                   {item.name}
                 </a>
@@ -72,10 +72,10 @@ const Navbar = () => {
                             <a
                               href={sub.link}
                               onClick={() => setActive(sub.link)}
-                              className={`block px-4 py-2.5 rounded-lg transition ${
+                              className={`block px-4 py-2.5 rounded-lg transition text-lg ${
                                 active === sub.link
-                                  ? "bg-blue-50 text-blue-700 font-medium"
-                                  : "text-gray-700 hover:bg-gray-50 hover:text-blue-600"
+                                  ? "bg-blue-50 text-[#c4c451] font-medium"
+                                  : "text-gray-700 hover:bg-gray-50 hover:text-[#c4c451]"
                               }`}
                             >
                               {sub.name}
@@ -94,7 +94,7 @@ const Navbar = () => {
           <div className="hidden lg:block">
             <a
               href="#reservation"
-              className="inline-flex items-center rounded-xl bg-brandYellow px-4 py-2 text-sm font-semibold text-black shadow-sm transition hover:brightness-95"
+              className="inline-flex items-center rounded-xl bg-[#c4c451] px-4 py-2 text-sm font-semibold text-black shadow-sm transition hover:bg-[#b5b53e]"
             >
               Reservation
             </a>
@@ -130,11 +130,10 @@ const Navbar = () => {
               <li key={item.id} className="rounded-lg">
                 {/* Top-level row */}
                 <button
-                  className={`flex w-full items-center justify-between rounded-lg px-3 py-2 transition hover:bg-gray-50 ${
-                    active === item.link ? "text-blue-600 font-semibold" : "text-gray-700"
+                  className={`flex w-full items-center justify-between rounded-lg px-3 py-2 transition hover:bg-gray-50 text-sm ${
+                    active === item.link ? "text-[#c4c451] font-semibold" : "text-gray-700"
                   }`}
                   onClick={() => {
-                    // toggle only if has submenu; else navigate
                     if (item.submenu) {
                       setHoveredId((id) => (id === item.id ? null : item.id));
                     } else {
@@ -144,11 +143,10 @@ const Navbar = () => {
                   }}
                 >
                   <span>{item.name}</span>
-                  {/* subtle dot to show expandable, no arrow */}
                   {item.submenu && (
                     <span
                       className={`ml-3 h-2 w-2 rounded-full transition ${
-                        hoveredId === item.id ? "bg-blue-500" : "bg-gray-300"
+                        hoveredId === item.id ? "bg-[#c4c451]" : "bg-gray-300"
                       }`}
                     />
                   )}
@@ -169,10 +167,10 @@ const Navbar = () => {
                           setActive(sub.link);
                           setMobileOpen(false);
                         }}
-                        className={`mt-1 block rounded-md px-3 py-2 text-sm transition ${
+                        className={`mt-1 block rounded-md px-3 py-2 text-lg transition ${
                           active === sub.link
-                            ? "bg-blue-50 text-blue-700 font-medium"
-                            : "text-gray-600 hover:text-blue-600 hover:bg-gray-50"
+                            ? "bg-blue-50 text-[#c4c451] font-medium"
+                            : "text-gray-600 hover:text-[#c4c451] hover:bg-gray-50"
                         }`}
                       >
                         {sub.name}
@@ -187,7 +185,7 @@ const Navbar = () => {
           <a
             href="#reservation"
             onClick={() => setMobileOpen(false)}
-            className="mt-3 block w-full rounded-xl bg-blue-600 px-4 py-2 text-center font-semibold text-white shadow hover:bg-blue-700 transition"
+            className="mt-3 block w-full rounded-xl bg-[#c4c451] px-4 py-2 text-center font-semibold text-white shadow hover:bg-[#b5b53e] transition"
           >
             Reservation
           </a>
