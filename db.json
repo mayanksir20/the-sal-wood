@@ -33,25 +33,29 @@
       "heading": "Weddings & Social Events",
       "subcontent": "Your dream destination for unforgettable celebrations",
       "content": "Our resort is the perfect destination wedding venue, hosting royal weddings, grand receptions, and private social events. Spacious halls, lush lawns, premium décor, and complete wedding packages ensure your special day is truly memorable.",
-      "buttonText": "Explore Now"
+      "buttonText": "Explore Now",
+      "image": "./src/assets/Images/banner-1.png"
     },
     {
       "heading": "Live Entertainment & Performers",
       "subcontent": "Where nights come alive with music and laughter",
       "content": "Weekend live concerts, DJ parties, comedy nights, and cultural shows make the resort a vibrant entertainment hub. Ticketed events attract audiences while boosting F&B sales, with easy integration for online booking platforms.",
-      "buttonText": "Know More"
+      "buttonText": "Know More",
+      "image": "./src/assets/Images/banner-2.png"
     },
     {
       "heading": "Corporate Tie-Ups + Co-working Spaces",
       "subcontent": "Seamless corporate solutions & flexible workspaces",
       "content": "Our resort offers versatile halls and meeting spaces for corporate events, conferences, workshops, and team-building activities. In addition, modern co-working spaces provide freelancers and startups with a productive environment, combining business efficiency with the resort’s serene ambiance.",
-      "buttonText": "Reserve Table"
+      "buttonText": "Reserve Table",
+      "image": "./src/assets/Images/banner-3.png"
     },
     {
       "heading": "Film, Ad & OTT Shooting Location",
       "subcontent": "Premium location for cinematic and commercial productions",
       "content": "Our resort provides stunning settings for films, OTT series, advertisements, and brand campaigns. With versatile indoor and outdoor spaces, professional crews can capture cinematic shots, commercial visuals, and digital content in a fully equipped, picturesque environment.",
-      "buttonText": "Book Now"
+      "buttonText": "Book Now",
+      "image": "./src/assets/Images/banner-4.jpg"
     }
   ],
   "services": [

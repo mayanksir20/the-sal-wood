@@ -1,7 +1,8 @@
 // import { useState } from "react";
 import "./App.css";
-import Navbar from "./Header/Navbar";
+import Navbar from "./components/Navbar/Navbar";
 import HomeSection from "./PagesSection/HomeSection";
+
 
 function App() {
   return (
