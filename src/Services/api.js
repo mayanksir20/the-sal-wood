@@ -24,4 +24,18 @@ export const fetchBannerContent = async () => {
   }
 };
 
+// services api.js
+export const fetchServices = async () => {
+  try {
+    const res = await fetch("http://localhost:5000/services");
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching services:", error);
+    return [];
+  }
+};
+
+
+
 

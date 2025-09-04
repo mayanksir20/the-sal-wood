@@ -1,0 +1,214 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;600&display=swap");
+
+.exclusive-offers {
+  font-family: "Fira Sans", sans-serif;
+  background: #f0f8e1;
+  margin-top: 130px;
+}
+
+.section-title h2 {
+  color: #c4c451 !important;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+.section-title h2::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(to right, transparent, #c4c451, transparent);
+  border-radius: 2px;
+}
+
+.section-title .subtitle {
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #666;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.section-title .sub-details {
+  max-width: 600px;
+  margin: 10px auto 0;
+  color: #444;
+  font-size: 15px;
+}
+
+/* Card Hover Styling */
+.card-hover {
+  width: 100%;
+  height: 420px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 32px -10px rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+}
+
+.card-hover__content {
+  width: 100%;
+  text-align: center;
+  background-color: #86b971;
+  padding: 0 30px 40px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translateY(0);
+  transition: all 0.35s ease;
+  z-index: 3;
+}
+
+.card-hover__content::before,
+.card-hover__content::after {
+  content: "";
+  width: 100%;
+  height: 120px;
+  background-color: inherit;
+  position: absolute;
+  left: 0;
+  z-index: -1;
+}
+
+.card-hover__content::before {
+  top: -80px;
+  clip-path: ellipse(60% 80px at bottom center);
+}
+
+.card-hover__content::after {
+  bottom: -80px;
+  clip-path: ellipse(60% 80px at top center);
+}
+
+.card-hover__title {
+  font-size: 1.2rem;
+  margin-bottom: 1em;
+  font-weight: 600;
+  color: #1f1d42;
+}
+
+.card-hover__title span {
+  color: #2d7f0b;
+}
+
+.card-hover__text {
+  font-size: 0.85rem;
+  color: #333;
+}
+
+.card-hover__link {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translate(-50%, 10%);
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #2d7f0b;
+  opacity: 0;
+  padding: 10px;
+  transition: all 0.35s;
+  cursor: pointer;
+}
+
+.card-hover__link svg {
+  width: 18px;
+  margin-left: 6px;
+  transition: transform 0.3s;
+}
+
+.card-hover__link:hover svg {
+  transform: translateX(4px);
+}
+
+.card-hover__extra {
+  height: 54%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  font-size: 1.1rem;
+  text-align: center;
+  background-color: #86b971;
+  padding: 40px;
+  bottom: 0;
+  z-index: 1; /* 🔥 z-index ko 1 rakho */
+  color: #dee8c2;
+  transform: translateY(100%);
+  transition: transform 0.35s ease;
+}
+/* ✅ Only when the "Learn More" link is hovered */
+.card-hover:has(.card-hover__link:hover) .card-hover__extra {
+  transform: translateY(0);
+  z-index: 2;
+}
+/* ✅ Keep open while hovering the extra area itself */
+.card-hover:has(.card-hover__extra:hover) .card-hover__extra {
+  transform: translateY(0);
+  z-index: 2;
+}
+
+.card-hover__extra span {
+  color: #2d7f0b;
+}
+
+.card-hover img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+  transform: scale(1.2);
+  transition: transform 0.35s ease;
+}
+
+/* Hover Effects */
+.card-hover:hover .card-hover__content {
+  background-color: #dee8c2;
+  bottom: 100%;
+  transform: translateY(100%);
+  padding: 50px 40px;
+}
+
+.card-hover:hover .card-hover__link {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.card-hover:hover img {
+  transform: scale(1);
+}
+
+/* ✅ Only link hover opens extra content */
+.card-hover__link:hover ~ .card-hover__extra {
+  transform: translateY(0);
+  z-index: 2;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .card-hover {
+    height: 380px;
+  }
+}
+
+@media (max-width: 768px) {
+  .card-hover {
+    height: 350px;
+  }
+}
+
+@media (max-width: 576px) {
+  .card-hover {
+    height: 320px;
+  }
+}

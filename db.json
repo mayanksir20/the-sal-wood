@@ -71,8 +71,16 @@
       "title": "Beach House, California",
       "img": "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
       "rating": 4.8,
-      "description": "Beautiful beach house with ocean views...",
+      "description": "The Sal Wood Resort is the perfect destination to celebrate life’s special moments. From weddings and receptions to private gatherings, our elegant lawns and premium décor set the stage for unforgettable memories. Our team ensures every event is crafted with a touch of luxury.",
       "price": "$199 per night",
+      "features": ["price", "wifi", "bedroom", "tv", "fire", "more"]
+    },
+    {
+      "title": "Weddings & Social Events",
+      "img": "https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+      "rating": 5.0,
+      "description": "The Sal Wood Resort is the perfect destination to celebrate life’s special moments. From weddings and receptions to private gatherings, our elegant lawns and premium décor set the stage for unforgettable memories. Our team ensures every event is crafted with a touch of luxury.",
+      "price": "$129 per night",
       "features": ["price", "wifi", "bedroom", "tv", "fire", "more"]
     }
   ]
